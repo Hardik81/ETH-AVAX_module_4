@@ -8,10 +8,10 @@ So this program conssit of smart contract Points.sol in which we have written a 
 ## Getting Started
 
 ### Installing
-'''
+```
 cd {your project)
 npm init -y
-'''
+```
 ### Executing program
 
 * Run these two commands to create and initialize npm to create package.json in it.
