@@ -119,7 +119,7 @@ const hre = require("hardhat");
 
 async function main() {
   // Get the Points smart contract
-  const Degen = await hre.ethers.getContractFactory("DegenToken");
+  const Degen = await hre.ethers.getContractFactory("Tokenn");
 
   // Deploy it
   const degen = await Degen.deploy();
