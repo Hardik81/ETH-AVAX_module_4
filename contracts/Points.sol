@@ -1,10 +1,13 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.9;
+pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 contract Tokenn is ERC20 {
+    mapping (uint256 => uint256) public items;
     constructor() ERC20("DEGEN", "DGN") {
-        
+        items[1]=2;
+        items[2]=4;
+        items[3]=1;
     }
     address owner=msg.sender;
     modifier mint_by_owner(){
@@ -25,9 +28,14 @@ contract Tokenn is ERC20 {
     function check_balance(address account) external view returns(uint256){
       return this.balanceOf(account);
     }
-    function redeem_points(address account,uint items) public {
-      require(balanceOf(msg.sender)>=(items*5) && msg.sender==account,"Not enough balance");
-      _burn(account,(items*5) );
+    function view_items () public pure returns(string memory){
+      
+      return("1. T shirt\n2. Coffee mug\n3. stickers");
+
+    }
+    function redeem_points(address account,uint choice) public {
+      require(balanceOf(msg.sender)>=(items[choice]) && msg.sender==account,"Not enough balance");
+      _transfer(account,owner,(items[choice]) );
 
     }
     function decimals() override public pure returns(uint8){
